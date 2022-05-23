@@ -44,6 +44,12 @@ h2 {
     padding: 0px 0;
     letter-spacing: 1px;
 }
+h3 {
+    font-family: "Open Sans";
+    font-size: 20px;
+    padding: 50px 100;
+    letter-spacing: 1px;
+}
 .bold {
     font-weight: bold;
 }
@@ -62,4 +68,13 @@ img {
     margin: 0 auto;
     height: auto;
     border: 2px solid white;
+}
+button {
+    width: auto;
+    height: auto;
+    padding: 10px 10%
+}
+button:hover {
+    background-color: #f5d4f7; 
+    color: white;
 }
