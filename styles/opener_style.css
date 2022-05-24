@@ -71,9 +71,9 @@ img {
     border: 2px solid white;
 }
 button {
-    width: auto;
-    height: auto;
-    padding: 10px 10%
+    width: auto ;
+    height: auto ;
+    padding: 1px 10%;
 }
 button:hover {
     background-color: #f5d4f7; 
