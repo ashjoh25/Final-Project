@@ -74,6 +74,7 @@ button {
     width: auto ;
     height: auto ;
     padding: 1px 10%;
+    border-radius: 6px;
 }
 button:hover {
     background-color: #f5d4f7; 
