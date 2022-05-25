@@ -1,1 +1,6 @@
 /* style for the main page with lists and tasks */
+
+.list_container1 {
+    Display grid;
+    grid_template_columns: 
+}
