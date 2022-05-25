@@ -48,7 +48,22 @@ h2 {
 h3 {
     font-family: "Open Sans";
     font-size: 20px;
-    padding: 50px 100;
+    text-align: center;
+    padding: 0px 0;
+    letter-spacing: 1px;
+}
+h4 {
+    font-family: "Open Sans";
+    font-size: 20px;
+    text-align: center;
+    padding: 0px 0;
+    letter-spacing: 1px;
+}
+h5 {
+    font-family: "Open Sans";
+    font-size: 20px;
+    text-align: center;
+    padding: 0px 0;
     letter-spacing: 1px;
 }
 .bold {
@@ -75,6 +90,7 @@ button {
     height: auto ;
     padding: 1px 10%;
     border-radius: 6px;
+    text-align: center;
 }
 button:hover {
     background-color: #f5d4f7; 
