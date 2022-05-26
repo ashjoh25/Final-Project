@@ -1,6 +1,42 @@
 /* style for the main page with lists and tasks */
 
+li {
+    font-size: 28px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+text {
+    font-size: 100px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
 .list_container1 {
-    Display grid;
-    grid_template_columns: 
+    background-color: aqua;
+    Display: grid;
+    grid-template-columns: repeat(3, 640px);
+    grid-template-rows: minmax(200px, auto);
+    gap: auto;
+}
+
+.slot1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.slot2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.slot3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
