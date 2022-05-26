@@ -12,8 +12,14 @@ text {
     letter-spacing: 1px;
 }
 
+.masterlist {
+    Display: grid;
+    grid-template-columns: repeat(3, 640px);
+    grid-template-rows: minmax(200px, auto);
+    gap: auto;
+}
+
 .list_container1 {
-    background-color: aqua;
     Display: grid;
     grid-template-columns: repeat(3, 640px);
     grid-template-rows: minmax(200px, auto);
@@ -39,4 +45,46 @@ text {
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
+}
+
+.slot4 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.slot5 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.slot6 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.slot7 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.slot8 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+
+.slot9 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
 }
