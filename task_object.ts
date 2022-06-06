@@ -1,17 +1,9 @@
-// properties and behaviors of a Task
+class taskManager {
 
-class Task {
-    
-    masterList : HTMLElement;
-
-    constructor(masterList : HTMLElement) {
-        this.masterList = masterList;
-    }
-
-    addtoMaster(text : string): void {
-        let newTaskItem : HTMLElement = document.createElement("input");
+    addtoMaster(text : string, masterList : HTMLDivElement): void {
+        let newTaskItem = document.createElement("input") as HTMLElement;
         newTaskItem.textContent = text;
         newTaskItem.setAttribute("type", "checkbox");
-        this.masterList.appendChild(newTaskItem);
+        masterList.appendChild(newTaskItem);
     }
 }

@@ -19,7 +19,7 @@ text {
     gap: auto;
 }
 
-.list_container1 {
+.list_container {
     Display: grid;
     grid-template-columns: repeat(3, 640px);
     grid-template-rows: minmax(200px, auto);
