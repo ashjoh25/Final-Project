@@ -20,7 +20,3 @@ submitButton.addEventListener("click", () => {
 addTaskbutton.addEventListener("click", () => {
     taskObject.addtoMaster(taskInput.value);
 });
-
-document.addEventListener("mousedown", function(event: MouseEvent){
-
-});
