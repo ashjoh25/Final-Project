@@ -10,18 +10,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Task Manager</title>    
-    <script src = "lists_list.ts"></script>
-    <script src = "manager.ts"></script>
-    <script src = "list_object.ts"></script>
-    <script src = "event_handlers.ts"></script>
 </head>
 <body>
     <h1>Welcome to your task manager!</h1>    
+    <h2>Already a current user?</h2>
+    <h5><button type = "button" class = "infoExist">Click here!</button></h5>
     <h2>Type your name in here: <input type = "text" name = "name" class="name"></h2>
-    <h3>Number of lists: <input type = "number" name = "lists" class = "lists"></h3>
-    <h4>Names of lists seperated by commas:<input type = "string" name = "listnames" class = listnames></h4>
-    <h5><button type = "button" class = "submitInfo" onclick = "window.location.href = 'main.html';">Submit</button></h5>
+    <h3>Number of lists: <input type = "number" class = "lists"></h3>
+    <h4>Names of lists seperated by commas:<input type = "string" class = listnames></h4>
+    <h5><button type = "button" class = "submitInfo">Submit</button></h5>
     
-    <script src = "event_handlers.ts"></script>
+    <script src = "list_object.js"></script>
+    <script src = "task_object.js"></script>
+    <script src = "opener_event_handlers.js"></script>
 </body>
 </html>
