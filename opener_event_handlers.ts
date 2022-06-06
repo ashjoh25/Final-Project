@@ -8,7 +8,10 @@ submitButton.addEventListener("click", () => {
     let numberoflists = document.querySelector(".lists") as HTMLInputElement;
     let namesoflists = document.querySelector(".listnames") as HTMLInputElement;
 
-    localStorage.setItem("username", username.value);
+    if (username.value)
+        localStorage.setItem("username", username.value);
+    else
+        localStorage.setItem("username", "Your");
     localStorage.setItem("numoflists", numberoflists.value);
     localStorage.setItem("nameoflists", namesoflists.value);
     
