@@ -1,7 +1,7 @@
 const taskObject : taskManager = new taskManager();
 const listObject : listManager = new listManager();
 
-const masterList = document.querySelector(".masterList") as HTMLDivElement;
+const masterList = document.querySelector(".master1") as HTMLDivElement;
 const list_container = document.querySelector(".list_container") as HTMLDivElement
 
 listObject.setUsername();

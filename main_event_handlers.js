@@ -1,7 +1,7 @@
 "use strict";
 const taskObject = new taskManager();
 const listObject = new listManager();
-const masterList = document.querySelector(".masterList");
+const masterList = document.querySelector(".master1");
 const list_container = document.querySelector(".list_container");
 listObject.setUsername();
 listObject.loadLists(list_container);
