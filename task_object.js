@@ -4,6 +4,7 @@ class taskManager {
         let newTaskItem = document.createElement("label");
         newTaskItem.textContent = text;
         newTaskItem.setAttribute("class", "taskLabel");
+        newTaskItem.setAttribute("draggable", "true");
         masterList.appendChild(newTaskItem);
         let newCheckBox = document.createElement("input");
         newCheckBox.setAttribute("type", "checkbox");
