@@ -54,10 +54,8 @@ class taskManager {
         let newTaskItem = document.createElement("label") as HTMLLabelElement;
         newTaskItem.textContent = text;
         newTaskItem.setAttribute("class", "taskLabel");
-        list.appendChild(newTaskItem);
-        this.updateLocal();
         newTaskItem.setAttribute("draggable", "true");
-        masterList.appendChild(newTaskItem);
+        list.appendChild(newTaskItem);
 
         let newCheckBox = document.createElement("input") as HTMLInputElement;
         newCheckBox.setAttribute("type", "checkbox");
@@ -67,6 +65,7 @@ class taskManager {
         newCheckMark.setAttribute("class", "checkmark");
         newTaskItem.appendChild(newCheckMark)
 
+        this.updateLocal();
         localStorage.removeItem("userWithInfo");
         localStorage.setItem("userWithInfo", "true")
     }
