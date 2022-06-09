@@ -76,9 +76,13 @@ text {
   
   /* change background when checkbox is clicked */
   .taskLabel input:checked ~ .checkmark {
-    background-color: #2196F3;
+    background-color: #9EA9ED;
   }
   
+  .taskLabel input:checked ~ .checkmark {
+    text-decoration: line-through;
+  }
+
   /* adds checkmark to checkbox */
   .checkmark:after {
     content: "";
