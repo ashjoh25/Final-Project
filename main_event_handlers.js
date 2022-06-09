@@ -4,7 +4,7 @@ const listObject = new listManager();
 const masterList = document.querySelector(".master1");
 const list_container = document.querySelector(".list_container");
 listObject.setUsername();
-listObject.loadListsNames(list_container);
+listObject.loadListsNames();
 if (localStorage.getItem("userWithInfo") === "true")
     listObject.loadListsTasks(masterList, list_container, taskObject);
 const addTaskbutton = document.querySelector(".addTask");

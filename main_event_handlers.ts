@@ -5,7 +5,7 @@ const masterList = document.querySelector(".master1") as HTMLDivElement;
 const list_container = document.querySelector(".list_container") as HTMLDivElement
 
 listObject.setUsername();
-listObject.loadListsNames(list_container);
+listObject.loadListsNames();
 
 if (localStorage.getItem("userWithInfo") === "true")
     listObject.loadListsTasks(masterList, list_container, taskObject);
