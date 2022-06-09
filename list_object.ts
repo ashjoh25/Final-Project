@@ -14,6 +14,7 @@ class listManager {
             // Creates a div container which acts as the "list" to be placed in the corresponding slot on the webpage
             let list_ele = document.createElement("div");
             list_ele.setAttribute("class", "slot" + i);
+            list_ele.setAttribute("id", "box" + i);
             list_container.appendChild(list_ele)
 
             // Adds name of list to the corresponding list on the webpage
