@@ -8,13 +8,26 @@ const taskLabel = document.querySelector(".tasklabel") as HTMLLabelElement
 
 
 listObject.setUsername();
-listObject.loadLists(list_container);
+listObject.loadListsNames(list_container);
+
+if (localStorage.getItem("userWithInfo") === "true")
+    listObject.loadListsTasks(masterList, list_container, taskObject);
 
 const addTaskbutton = document.querySelector(".addTask") as HTMLButtonElement;
 
 addTaskbutton.addEventListener("click", () => {
     let taskInput = document.querySelector(".taskInput") as HTMLInputElement;
-    taskObject.addtoMaster(taskInput.value, masterList);
+    if (! taskInput.value)
+        return;
+    else
+        taskObject.addtoList(taskInput.value, masterList);
+});
+
+const clearTasksbutton = document.querySelector(".clearAll") as HTMLButtonElement;
+
+clearTasksbutton.addEventListener("click", () => {
+    taskObject.clearStorage();
+    taskObject.clearDisplay();
 });
 
  document.addEventListener("dragstart", dragStart); 
@@ -57,3 +70,12 @@ function drop(event : DragEvent) {
     event.target!.appendChild(dragged);
 
 }
+const changeListNamebutton = document.querySelector(".changeListName") as HTMLButtonElement;
+
+changeListNamebutton.addEventListener("click", () => {
+    let listNameInput = document.querySelector(".listNameInput") as HTMLInputElement;
+    if (! listNameInput.value)
+        return;
+    else
+        listObject.changeListName(listNameInput.value);
+});
