@@ -8,7 +8,7 @@ const taskLabel = document.querySelector(".tasklabel") as HTMLLabelElement
 
 
 listObject.setUsername();
-listObject.loadListsNames(list_container);
+listObject.loadListsNames();
 
 if (localStorage.getItem("userWithInfo") === "true")
     listObject.loadListsTasks(masterList, list_container, taskObject);

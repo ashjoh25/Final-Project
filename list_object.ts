@@ -9,7 +9,20 @@ class listManager {
             username_ele.textContent = username + "'s Task Manager!";
     }
 
-    loadListsNames (list_container : HTMLDivElement) : void {
+    // clearListNames () : void {
+    //     let namesoflists = localStorage.getItem("nameoflists") as String;
+    //     let names : string[] = namesoflists.split(",");
+
+    //     for (let i = 1; i <= names.length; i++) {
+    //         let list_ele = document.querySelector(".slot" + i) as HTMLDivElement;
+    //         let list_contents = list_ele.childNodes;
+    //         list_contents[0].remove();
+    //     }
+    // }
+
+    loadListsNames () : void {
+        let list_container = document.querySelector(".list_container") as HTMLDivElement
+
         let namesoflists = localStorage.getItem("nameoflists") as String;
         let names : string[] = namesoflists.split(",");
 
@@ -58,8 +71,14 @@ class listManager {
     }
 
     changeListName (listChange : string) : void {
-        listChange.split(",");
-        
+        let list_change : string[] = listChange.split(",");
+        let namesoflists = localStorage.getItem("nameoflists") as String;
+        let names : string[] = namesoflists.split(",");
+
+        names[names.indexOf(list_change[0], 0)] = list_change[1];
+        localStorage.removeItem("namesoflists");
+        localStorage.setItem("namesoflists", names.join(","));
+        this.loadListsNames();
     }
 
 }
