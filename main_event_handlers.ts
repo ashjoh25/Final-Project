@@ -1,17 +1,19 @@
 let dragged : EventTarget | null = null
+
 const taskObject : taskManager = new taskManager();
 const listObject : listManager = new listManager();
 
 const masterList = document.querySelector(".master1") as HTMLDivElement;
-const list_container = document.querySelector(".list_container") as HTMLDivElement
-const taskLabel = document.querySelector(".tasklabel") as HTMLLabelElement
+const list_container = document.querySelector(".list_container") as HTMLDivElement;
+const taskLabel = document.querySelector(".tasklabel") as HTMLLabelElement;
 
 
 listObject.setUsername();
-listObject.loadListsNames();
+listObject.loadLists();
 
 if (localStorage.getItem("userWithInfo") === "true")
-    listObject.loadListsTasks(masterList, list_container, taskObject);
+    listObject.loadMasterTasks(masterList);
+    listObject.loadListsTasks(taskObject);
 
 const addTaskbutton = document.querySelector(".addTask") as HTMLButtonElement;
 
@@ -21,25 +23,26 @@ addTaskbutton.addEventListener("click", () => {
         return;
     else
         taskObject.addtoList(taskInput.value, masterList);
+        taskObject.updateLocal();
 });
 
 const clearTasksbutton = document.querySelector(".clearAll") as HTMLButtonElement;
 
 clearTasksbutton.addEventListener("click", () => {
-    taskObject.clearStorage();
+    taskObject.clearAllStorage();
     taskObject.clearDisplay();
 });
 
- document.addEventListener("dragstart", dragStart); 
+document.addEventListener("dragstart", dragStart); 
  
-  function dragStart(event: DragEvent) {
+function dragStart(event: DragEvent) {
 
  
     dragged = event.target
 }
 
+//drop targets
 
-//drpp targets
 const boxes = document.querySelectorAll(".list_container")
 
 boxes.forEach(list_container => {
@@ -60,7 +63,7 @@ function dragOver(event : DragEvent) {
 }
 
 function dragLeave(event : DragEvent) {
-    event.target!.classList.remove("drag-over")
+    event.target!.classList.remove("drag-over");
 }
 
 function drop(event : DragEvent) {
@@ -68,8 +71,10 @@ function drop(event : DragEvent) {
     
     //add it to drop target
     event.target!.appendChild(dragged);
+    taskObject.updateLocal();
 
 }
+
 const changeListNamebutton = document.querySelector(".changeListName") as HTMLButtonElement;
 
 changeListNamebutton.addEventListener("click", () => {
@@ -78,4 +83,5 @@ changeListNamebutton.addEventListener("click", () => {
         return;
     else
         listObject.changeListName(listNameInput.value);
+        listObject.loadListsTasks(taskObject);
 });

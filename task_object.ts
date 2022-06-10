@@ -1,13 +1,14 @@
 class taskManager {
 
-    clearStorage() : void {
+    clearAllStorage() : void {
         localStorage.removeItem("master1");
+
         let namesoflists = localStorage.getItem("nameoflists") as string;
         let names : string[] = namesoflists.split(",");
 
-            for (let i = 1; i <= names.length; i++) {
-                localStorage.removeItem("slot" + i);
-            }
+        for (let i = 1; i <= names.length; i++) {
+            localStorage.removeItem("slot" + i);
+        }
     }
 
     clearDisplay() : void {
@@ -18,7 +19,6 @@ class taskManager {
 
     updateLocal() {
 
-        this.clearStorage();
         let masterStorage : string = "";
 
         let masterList = (document.querySelector(".master1") as HTMLDivElement).childNodes;
@@ -26,26 +26,29 @@ class taskManager {
         for (const elm of masterList) {
             masterStorage += elm.textContent + ",";
         }
-
         masterStorage = masterStorage.slice(0, -1);
+
+        localStorage.removeItem("master1");
         localStorage.setItem("master1", masterStorage);
         
+
         let namesoflists = localStorage.getItem("nameoflists") as string;
         let names : string[] = namesoflists.split(",");
-
 
         for (let i = 1; i <= names.length; i++) {
             let list = document.querySelector(".slot" + i) as HTMLDivElement;
             let slotStorage : string = "";
+            
 
-            if (! (list.childNodes.length === 0)) {
+            if (list.hasChildNodes()) {
                 let listTasks = list.childNodes;
                 for (let j = 1; j < list.childNodes.length; j++) {
                     slotStorage += listTasks[j].textContent + ",";
                 }
+                slotStorage = slotStorage.slice(0, -1);
             }
 
-            slotStorage = slotStorage.slice(0, -1);
+            localStorage.removeItem("slot" + i);
             localStorage.setItem("slot" + i, slotStorage);
         }
     }
@@ -67,7 +70,6 @@ class taskManager {
         newCheckMark.setAttribute("class", "checkmark");
         newTaskItem.appendChild(newCheckMark)
 
-        this.updateLocal();
         localStorage.removeItem("userWithInfo");
         localStorage.setItem("userWithInfo", "true")
     }

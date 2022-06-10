@@ -1,6 +1,6 @@
 class listManager {
 
-    setUsername () : void {
+    setUsername() : void {
         let username : string | null = localStorage.getItem("username");
         let username_ele = document.querySelector(".username") as HTMLHeadingElement;
         if (username === "Your")
@@ -9,18 +9,17 @@ class listManager {
             username_ele.textContent = username + "'s Task Manager!";
     }
 
-    // clearListNames () : void {
-    //     let namesoflists = localStorage.getItem("nameoflists") as String;
-    //     let names : string[] = namesoflists.split(",");
+    clearDisplay() : void {
+        let namesoflists = localStorage.getItem("nameoflists") as String;
+        let names : string[] = namesoflists.split(",");
 
-    //     for (let i = 1; i <= names.length; i++) {
-    //         let list_ele = document.querySelector(".slot" + i) as HTMLDivElement;
-    //         let list_contents = list_ele.childNodes;
-    //         list_contents[0].remove();
-    //     }
-    // }
+        for (let i = 1; i <= names.length; i++) {
+            let list_ele = document.querySelector(".slot" + i) as HTMLDivElement;
+            list_ele.remove();
+        }
+    }
 
-    loadListsNames () : void {
+    loadLists () : void {
         let list_container = document.querySelector(".list_container") as HTMLDivElement
 
         let namesoflists = localStorage.getItem("nameoflists") as String;
@@ -41,7 +40,7 @@ class listManager {
         }
     }
 
-    loadListsTasks (masterList : HTMLDivElement, list_container : HTMLDivElement, taskObject : taskManager) : void {
+    loadMasterTasks (masterList : HTMLDivElement) : void {
         let masterListTasks = localStorage.getItem("master1") as string;
         let masterTasks : string[] = []
 
@@ -53,18 +52,22 @@ class listManager {
             }
         }
 
+    }
+
+    loadListsTasks (taskObject : taskManager) : void {
         let namesoflists = localStorage.getItem("nameoflists") as string;
         let names : string[] = namesoflists.split(",");
 
         for (let i = 1; i <= names.length; i++) {
             let ListTasks = localStorage.getItem("slot" + i) as string;
+            let list_ele = document.querySelector(".slot" + i) as HTMLDivElement;
             let listTasks : string[] = [];
             
             if (ListTasks) {
                 listTasks = ListTasks.split(",");
 
                 for (let j = 0; j < listTasks.length; j++) {
-                    taskObject.addtoList(listTasks[j], list_container);
+                    taskObject.addtoList(listTasks[j], list_ele);
                 }
             }
         }
@@ -76,9 +79,11 @@ class listManager {
         let names : string[] = namesoflists.split(",");
 
         names[names.indexOf(list_change[0], 0)] = list_change[1];
-        localStorage.removeItem("namesoflists");
-        localStorage.setItem("namesoflists", names.join(","));
-        this.loadListsNames();
+        localStorage.removeItem("nameoflists");
+        localStorage.setItem("nameoflists", names.join(","));
+
+        this.clearDisplay();
+        this.loadLists();
     }
 
 }
