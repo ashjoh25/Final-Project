@@ -11,7 +11,7 @@ function setUsername() : void {
     };
 };
 
-let dragged : EventTarget | null = null;
+
 
 // create a new task object and list object that contain the necessary methods
 const taskObject : taskManager = new taskManager();
@@ -83,14 +83,23 @@ document.querySelectorAll<HTMLElement>(".taskLabel").forEach(function(task_elm) 
     });
 });
 
+//beginning of dragging code
+let dragged : EventTarget | null = null;
 document.addEventListener("dragstart", dragStart); 
  
 function dragStart(event: DragEvent) {
     dragged = event.target;
 };
 
-const list_container = document.querySelector(".list_container") as HTMLDivElement;
 const boxes = document.querySelectorAll(".list_container");
+const moreboxes = document.querySelectorAll(".masterList");
+
+moreboxes.forEach(masterList => {
+    masterList.addEventListener("dragenter", dragEnter);
+    masterList.addEventListener("dragover", dragOver);
+    masterList.addEventListener("dragleave", dragLeave);
+    masterList.addEventListener("drop", drop);
+});
 
 boxes.forEach(list_container => {
     list_container.addEventListener("dragenter", dragEnter);
@@ -120,6 +129,7 @@ function drop(event : DragEvent) {
     event.target!.appendChild(dragged);
     taskObject.updateLocal();
 };
+//end of dragging code
 
 // "autosave" --> every 1000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 setInterval(function() {

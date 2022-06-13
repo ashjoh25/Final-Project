@@ -13,7 +13,6 @@ function setUsername() {
     ;
 }
 ;
-let dragged = null;
 // create a new task object and list object that contain the necessary methods
 const taskObject = new taskManager();
 const listObject = new listManager();
@@ -74,10 +73,21 @@ document.querySelectorAll(".taskLabel").forEach(function (task_elm) {
     task_elm.addEventListener("click", (event) => {
         if (event.shiftKey === true) {
             taskObject.removeTask(event.target);
-        }
+        };
         ;
     });
 });
+
+// const deleteButton = document.querySelector("#delete") as HTMLButtonElement;
+// document.addEventListener("keydown", (event : KeyboardEvent) => {
+//     if (event.repeat)
+//         return;
+//     if (event.key === "Backspace") {
+//         taskObject.removeTask(event.target as HTMLElement);
+//     }
+// });
+//beginning of dragging code
+let dragged = null;
 document.addEventListener("dragstart", dragStart);
 function dragStart(event) {
     dragged = event.target;
@@ -85,6 +95,13 @@ function dragStart(event) {
 ;
 const list_container = document.querySelector(".list_container");
 const boxes = document.querySelectorAll(".list_container");
+const moreboxes = document.querySelectorAll(".masterList");
+moreboxes.forEach(masterList => {
+    masterList.addEventListener("dragenter", dragEnter);
+    masterList.addEventListener("dragover", dragOver);
+    masterList.addEventListener("dragleave", dragLeave);
+    masterList.addEventListener("drop", drop);
+});
 boxes.forEach(list_container => {
     list_container.addEventListener("dragenter", dragEnter);
     list_container.addEventListener("dragover", dragOver);
@@ -113,6 +130,7 @@ function drop(event) {
 }
 ;
 // "autosave" --> every 1000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
+//end of dragging code
 setInterval(function () {
     taskObject.updateLocal();
 }, 1000);
