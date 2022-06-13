@@ -23,7 +23,7 @@ class listManager {
             let list_ele = document.createElement("div");
             list_ele.setAttribute("class", "slot" + i);
             list_ele.setAttribute("id", "box" + i);
-            list_container.appendChild(list_ele)
+            list_container.appendChild(list_ele);
 
             // Adds name of list to the corresponding list on the webpage
             let list_name = array_of_listnames[i - 1];
@@ -38,10 +38,10 @@ class listManager {
             let master_slot = document.querySelector(".master" + i) as HTMLDivElement;
 
             let master_slot_content = localStorage.getItem("master" + i) as string;
-            let master_slot_tasknames : string[] = []
+            let master_slot_tasknames : string[] = [];
 
             let master_slot_checks = localStorage.getItem("masterCheck" + i) as string;
-            let master_check_values : string[] = []
+            let master_check_values : string[] = [];
 
             if (master_slot_content) {
                 master_slot_tasknames = master_slot_content.split(",");
