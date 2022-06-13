@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="styles/main_style.css" rel="stylesheet" type = "text/css" />
     <link href="styles/opener_style.css" rel="stylesheet" type = "text/css" />
-    <!--Font from google, may be changed any time-->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
     <title>Task Manager</title>    
 </head>
 <body>
-    <h1>Welcome to your task manager!</h1>    
-    <h2>Already a current user?</h2>
-    <h5><button type = "button" class = "infoExist">Click here!</button></h5>
-
+    <img src = "images/ashVri_logo.jpg" alt = "The ashVri Workspaces logo" 
+    title = "ashVri Workspaces" height = "600" width =>
+    <h1>Welcome to ashVri Workspaces!</h1>    
+    <h2>- Task Manager -</h2>
+    <h4><button type = "button" class = "infoExist">Log in!</button></h4>
+    <hr>
     <h2>First time? Want to start fresh?</h2>
-    <h2>Type your name in here: <input type = "text" name = "name" class="name"></h2>
-    <h3>Number of lists: <input type = "number" class = "lists"></h3>
-    <h4>Names of lists seperated by commas:<input type = "string" class = listnames></h4>
-    <h5><button type = "button" class = "submitInfo">Submit!</button></h5>
+    <h3>Name: <input type = "text" name = "name" class="name"></h2>
+    <h3>Number of Lists: <input type = "number" class = "lists"></h3>
+    <h3>Names of Lists (separated by commas): <input type = "string" class = listnames></h4>
+    <h4><button type = "button" class = "submitInfo">Submit!</button></h4>
     
     <script src = "list_object.js"></script>
     <script src = "task_object.js"></script>

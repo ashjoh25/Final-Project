@@ -1,0 +1,163 @@
+/* style for the main page with lists and tasks */
+
+body {
+  width: 1715px;
+}
+
+h4 {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+#lofi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.username {
+  font-style: italic;
+}
+
+.masterList {
+    Display: grid;
+    grid-template-columns: repeat(3, 640px);
+    grid-template-rows: minmax(200px, auto);
+    gap: auto;
+    font-weight: normal;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.master1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.list_container {
+    Display: grid;
+    grid-template-columns: repeat(3, 640px);
+    grid-template-rows: minmax(300px, auto);
+    gap: auto;
+}
+
+.taskLabel {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* hide default checkbox */
+.taskLabel input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* creates the checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #c4c8e3;
+}
+
+/* changes background cover with mouse hovers over */
+.taskLabel:hover input ~ .checkmark {
+  background-color: #a6aad1;
+}
+
+/* change background when checkbox is clicked */
+.taskLabel input:checked ~ .checkmark {
+  background-color: #9EA9ED;
+}
+
+/* adds checkmark to checkbox */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* shows checkmark (when checked) */
+.taskLabel input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* styles for the checkmark itself */
+.taskLabel .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+button {
+  display: inline-block;  
+  background-color: #9EA9ED;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Open Sans";
+  font-size: 15px;
+  font-weight: 1400;
+  height: 5%;
+  line-height: 5%;
+  margin: 35px;
+  overflow: visible;
+  padding: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+}
+
+button:active {
+  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+  outline: 0;
+}
+
+button:not([disabled]):active {
+  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  button {
+  padding: 12px 50px;
+  }
+}
+
+.hasInput {
+  margin-left: 4px;
+}
+
+input {
+  border: 1.5px solid #9EA9ED;
+  border-radius: 4px;
+  margin-right: 0%;
+  width: auto
+}

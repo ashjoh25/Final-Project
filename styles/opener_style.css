@@ -1,98 +1,83 @@
-/* style for the opening page that the user sees first */
-
-html {
-    background-color: #d6bbf5;
-    font-family: "Open Sans";
-    font-size: 16px;
-}
-body {
-    background-color: #d6bbf5;
-    width: 600px;
-    margin: 0 auto;
-    padding: 0 20px 20px 20px;
-    border: 0px solid rgb(255, 255, 255);
-}
-p {
-    font-size: 1.5em;
-    line-height: 1.5;
-    letter-spacing: 1px;
-    text-align: center;
-}
-
-h6 {font-size: 1em;
-    line-height: 1.5;
-    letter-spacing: 1px;
-    bottom: 0;
-    text-align: right;
-}
-li{
-    font-size: 1em;
-    line-height: 2;
-    letter-spacing: 1px;
-}
+/* styles for opener page that user sees first */
 
 h1 {
-    font-family: "Open Sans";
     font-size: 40px;
+    font-weight: 5000;
     text-align: center;
-    padding: 150px 0;
-    letter-spacing: 1px;
+    padding: 10px 0 10px 0;
+    letter-spacing: 3px;
 }
+
 h2 {
-    font-family: "Open Sans";
-    font-size: 20px;
+    font-size: 27px;
     text-align: center;
-    padding: 0px 0;
+    padding: 5px;
     letter-spacing: 1px;
 }
+
 h3 {
     font-family: "Open Sans";
     font-size: 20px;
     text-align: center;
-    padding: 0px 0;
+    padding: 5px;
     letter-spacing: 1px;
 }
+
 h4 {
-    font-family: "Open Sans";
-    font-size: 20px;
+    padding: 20px;
     text-align: center;
-    padding: 0px 0;
-    letter-spacing: 1px;
 }
-h5 {
-    font-family: "Open Sans";
-    font-size: 20px;
-    text-align: center;
-    padding: 0px 0;
-    letter-spacing: 1px;
-}
-.bold {
-    font-weight: bold;
-}
-p.bold {
-    text-decoration: underline;
-}
-li.bold {
-    font-style: italic;
-}
-#subjectintro {
-    color: rgb(90, 36, 36);
-}
+
 img {
-    width: 70%;
     display: block;
-    margin: 0 auto;
+    width: 35%;
     height: auto;
-    border: 2px solid white;
+    border: 2px;
+    margin: 0 auto;
+    padding: 50px;
 }
+
 button {
-    width: auto ;
-    height: auto ;
-    padding: 1px 10%;
-    border-radius: 6px;
+    display: inline-block;  
+    background-color: #9EA9ED;
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 1400;
+    height: auto;
+    line-height: 20px;
+    margin: auto;
+    overflow: visible;
+    padding: 20px;
     text-align: center;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
 }
-button:hover {
-    background-color: #f5d4f7; 
-    color: white;
+
+button:active {
+    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+    outline: 0;
+}
+
+button:not([disabled]):active {
+    box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+    button {
+    padding: 12px 50px;
+    }
+}
+
+input {
+    border: 1.5px solid #9EA9ED;
+    border-radius: 4px;
 }

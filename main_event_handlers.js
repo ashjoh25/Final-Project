@@ -2,33 +2,50 @@
 let dragged = null;
 const taskObject = new taskManager();
 const listObject = new listManager();
-const masterList = document.querySelector(".master1");
-const list_container = document.querySelector(".list_container");
-const taskLabel = document.querySelector(".tasklabel");
 listObject.setUsername();
 listObject.loadLists();
 if (localStorage.getItem("userWithInfo") === "true")
-    listObject.loadMasterTasks(masterList);
+    listObject.loadMasterTasks();
 listObject.loadListsTasks(taskObject);
-const addTaskbutton = document.querySelector(".addTask");
+const addTaskbutton = document.querySelector("#addTask");
 addTaskbutton.addEventListener("click", () => {
     let taskInput = document.querySelector(".taskInput");
-    if (!taskInput.value)
+    if (!taskInput.value) {
         return;
-    else
-        taskObject.addtoList(taskInput.value, masterList);
-    taskObject.updateLocal();
+    }
+    else {
+        let master_default = document.querySelector(".master1");
+        taskObject.addtoList(taskInput.value, master_default);
+        taskObject.updateLocal();
+    }
 });
-const clearTasksbutton = document.querySelector(".clearAll");
+const clearTasksbutton = document.querySelector("#clearAll");
 clearTasksbutton.addEventListener("click", () => {
     taskObject.clearAllStorage();
     taskObject.clearDisplay();
 });
+const changeListNamebutton = document.querySelector("#changeListName");
+changeListNamebutton.addEventListener("click", () => {
+    let listNameInput = document.querySelector(".listNameInput");
+    if (!listNameInput.value)
+        return;
+    else
+        listObject.changeListName(listNameInput.value);
+    listObject.loadListsTasks(taskObject);
+});
+const deleteButton = document.querySelector("#delete");
+// document.addEventListener("keydown", (event : KeyboardEvent) => {
+//     if (event.repeat)
+//         return;
+//     if (event.key === "Backspace") {
+//         taskObject.removeTask(event.target as HTMLElement);
+//     }
+// });
 document.addEventListener("dragstart", dragStart);
 function dragStart(event) {
     dragged = event.target;
 }
-//drop targets
+const list_container = document.querySelector(".list_container");
 const boxes = document.querySelectorAll(".list_container");
 boxes.forEach(list_container => {
     list_container.addEventListener("dragenter", dragEnter);
@@ -53,12 +70,6 @@ function drop(event) {
     event.target.appendChild(dragged);
     taskObject.updateLocal();
 }
-const changeListNamebutton = document.querySelector(".changeListName");
-changeListNamebutton.addEventListener("click", () => {
-    let listNameInput = document.querySelector(".listNameInput");
-    if (!listNameInput.value)
-        return;
-    else
-        listObject.changeListName(listNameInput.value);
-    listObject.loadListsTasks(taskObject);
-});
+setInterval(function () {
+    taskObject.updateLocal();
+}, 2000);

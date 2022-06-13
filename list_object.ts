@@ -1,31 +1,24 @@
 class listManager {
 
-    setUsername() : void {
-        let username : string | null = localStorage.getItem("username");
-        let username_ele = document.querySelector(".username") as HTMLHeadingElement;
-        if (username === "Your")
-            username_ele.textContent = username + " Task Manager!";
-        else
-            username_ele.textContent = username + "'s Task Manager!";
-    }
+    clearDisplay() : void { // clears all the lists from the page (other than the master)
+        // accesses all the list names from local storage + converts from its string form --> list (very useful)
+        let names_of_lists = localStorage.getItem("nameoflists") as String;
+        let array_of_listnames : string[] = names_of_lists.split(",");
 
-    clearDisplay() : void {
-        let namesoflists = localStorage.getItem("nameoflists") as String;
-        let names : string[] = namesoflists.split(",");
-
-        for (let i = 1; i <= names.length; i++) {
-            let list_ele = document.querySelector(".slot" + i) as HTMLDivElement;
-            list_ele.remove();
-        }
-    }
+        // for every existing list, select it from the page by its slot number and remove it 
+        for (let i = 1; i <= array_of_listnames.length; i++) {
+            let list_elm = document.querySelector(".slot" + i) as HTMLDivElement;
+            list_elm.remove();
+        };
+    };
 
     loadLists () : void {
         let list_container = document.querySelector(".list_container") as HTMLDivElement
 
-        let namesoflists = localStorage.getItem("nameoflists") as String;
-        let names : string[] = namesoflists.split(",");
+        let names_of_lists = localStorage.getItem("nameoflists") as String;
+        let array_of_listnames : string[] = names_of_lists.split(",");
 
-        for (let i = 1; i <= names.length; i++) {
+        for (let i = 1; i <= array_of_listnames.length; i++) {
             // Creates a div container which acts as the "list" to be placed in the corresponding slot on the webpage
             let list_ele = document.createElement("div");
             list_ele.setAttribute("class", "slot" + i);
@@ -33,50 +26,71 @@ class listManager {
             list_container.appendChild(list_ele)
 
             // Adds name of list to the corresponding list on the webpage
-            let list_name = names[i - 1];
+            let list_name = array_of_listnames[i - 1];
             let list_name_ele = document.createElement("h4");
             list_name_ele.textContent = list_name;
             list_ele.appendChild(list_name_ele);
         }
     }
 
-    loadMasterTasks (masterList : HTMLDivElement) : void {
-        let masterListTasks = localStorage.getItem("master1") as string;
-        let masterTasks : string[] = []
+    loadMasterTasks () : void {
+        for (let i = 1; i <= 3; i++) {
+            let master_slot = document.querySelector(".master" + i) as HTMLDivElement;
 
-        if (masterListTasks) {
-            masterTasks = masterListTasks.split(",");
+            let master_slot_content = localStorage.getItem("master" + i) as string;
+            let master_slot_tasknames : string[] = []
 
-            for (let i = 0; i < masterTasks.length; i++) {
-                taskObject.addtoList(masterTasks[i], masterList);
+            let master_slot_checks = localStorage.getItem("masterCheck" + i) as string;
+            let master_check_values : string[] = []
+
+            if (master_slot_content) {
+                master_slot_tasknames = master_slot_content.split(",");
+                master_check_values = master_slot_checks.split(",");
+
+                for (let j = 0; j < master_slot_tasknames.length; j++) {
+
+                    if (master_check_values[j] === "true") {
+                        taskObject.addtoList(master_slot_tasknames[j], master_slot, true);
+                    } else if (master_check_values[j] === "false") {
+                        taskObject.addtoList(master_slot_tasknames[j], master_slot, false);
+                    };
+                };
             }
-        }
-
+        };
     }
 
     loadListsTasks (taskObject : taskManager) : void {
-        let namesoflists = localStorage.getItem("nameoflists") as string;
-        let names : string[] = namesoflists.split(",");
+        let names_of_lists = localStorage.getItem("nameoflists") as string;
+        let names : string[] = names_of_lists.split(",");
 
         for (let i = 1; i <= names.length; i++) {
             let ListTasks = localStorage.getItem("slot" + i) as string;
+            let ChecksofTasks = localStorage.getItem("slot" + i + "Check") as string;
+
             let list_ele = document.querySelector(".slot" + i) as HTMLDivElement;
             let listTasks : string[] = [];
+            let checksofTasks : string[] = [];
             
             if (ListTasks) {
                 listTasks = ListTasks.split(",");
+                checksofTasks = ChecksofTasks.split(",");
 
                 for (let j = 0; j < listTasks.length; j++) {
-                    taskObject.addtoList(listTasks[j], list_ele);
-                }
-            }
-        }
-    }
+
+                    if (checksofTasks[j] === "true") {
+                        taskObject.addtoList(listTasks[j], list_ele, true);
+                    } else if (checksofTasks[j] === "false") {
+                        taskObject.addtoList(listTasks[j], list_ele, false);
+                    };
+                };
+            };
+        };
+    };
 
     changeListName (listChange : string) : void {
         let list_change : string[] = listChange.split(",");
-        let namesoflists = localStorage.getItem("nameoflists") as String;
-        let names : string[] = namesoflists.split(",");
+        let names_of_lists = localStorage.getItem("nameoflists") as String;
+        let names : string[] = names_of_lists.split(",");
 
         names[names.indexOf(list_change[0], 0)] = list_change[1];
         localStorage.removeItem("nameoflists");
@@ -84,6 +98,5 @@ class listManager {
 
         this.clearDisplay();
         this.loadLists();
-    }
-
-}
+    };
+};

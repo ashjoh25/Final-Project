@@ -1,109 +1,14 @@
-/* style for the main page with lists and tasks */
+/* styles for all pages */
 
-li {
-    font-size: 28px;
-    line-height: 1.5;
-    letter-spacing: 1px;
+html {
+    background-color: white;
+    font-family: "Open Sans";
+    font-size: 16px;
 }
 
-text {
-    font-size: 100px;
-    line-height: 1.5;
-    letter-spacing: 1px;
+body {
+    background-color: #efeffd;
+    width: 1675px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
 }
-
-.masterList {
-    Display: grid;
-    grid-template-columns: repeat(3, 640px);
-    grid-template-rows: minmax(200px, auto);
-    gap: auto;
-    font-weight: normal;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 10px;
-}
-
-.master1 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 0;
-    grid-row-end: 1;
-}
-
-.list_container {
-    Display: grid;
-    grid-template-columns: repeat(3, 640px);
-    grid-template-rows: minmax(200px, auto);
-    gap: auto;
-}
-
-.taskLabel {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* hide default checkbox */
-  .taskLabel input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* creates the checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-  }
-  
-  /* changes background cover with mouse hovers over */
-  .taskLabel:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  
-  /* change background when checkbox is clicked */
-  .taskLabel input:checked ~ .checkmark {
-    background-color: #9EA9ED;
-  }
-  
-  .taskLabel input:checked ~ .checkmark {
-    text-decoration: line-through;
-  }
-
-  /* adds checkmark to checkbox */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* shows checkmark (when checked) */
-  .taskLabel input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* styles for the checkmark itself */
-  .taskLabel .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }

@@ -33,31 +33,58 @@ class listManager {
             list_ele.appendChild(list_name_ele);
         }
     }
-    loadMasterTasks(masterList) {
-        let masterListTasks = localStorage.getItem("master1");
-        let masterTasks = [];
-        if (masterListTasks) {
-            masterTasks = masterListTasks.split(",");
-            for (let i = 0; i < masterTasks.length; i++) {
-                taskObject.addtoList(masterTasks[i], masterList);
+    loadMasterTasks() {
+        for (let i = 1; i <= 3; i++) {
+            let master_slot = document.querySelector(".master" + i);
+            let master_slot_content = localStorage.getItem("master" + i);
+            let master_slot_tasknames = [];
+            let master_slot_checks = localStorage.getItem("masterCheck" + i);
+            let master_check_values = [];
+            if (master_slot_content) {
+                master_slot_tasknames = master_slot_content.split(",");
+                master_check_values = master_slot_checks.split(",");
+                for (let j = 0; j < master_slot_tasknames.length; j++) {
+                    if (master_check_values[j] === "true") {
+                        taskObject.addtoList(master_slot_tasknames[j], master_slot, true);
+                    }
+                    else if (master_check_values[j] === "false") {
+                        taskObject.addtoList(master_slot_tasknames[j], master_slot, false);
+                    }
+                    ;
+                }
+                ;
             }
         }
+        ;
     }
     loadListsTasks(taskObject) {
         let namesoflists = localStorage.getItem("nameoflists");
         let names = namesoflists.split(",");
         for (let i = 1; i <= names.length; i++) {
             let ListTasks = localStorage.getItem("slot" + i);
+            let ChecksofTasks = localStorage.getItem("slot" + i + "Check");
             let list_ele = document.querySelector(".slot" + i);
             let listTasks = [];
+            let checksofTasks = [];
             if (ListTasks) {
                 listTasks = ListTasks.split(",");
+                checksofTasks = ChecksofTasks.split(",");
                 for (let j = 0; j < listTasks.length; j++) {
-                    taskObject.addtoList(listTasks[j], list_ele);
+                    if (checksofTasks[j] === "true") {
+                        taskObject.addtoList(listTasks[j], list_ele, true);
+                    }
+                    else if (checksofTasks[j] === "false") {
+                        taskObject.addtoList(listTasks[j], list_ele, false);
+                    }
+                    ;
                 }
+                ;
             }
+            ;
         }
+        ;
     }
+    ;
     changeListName(listChange) {
         let list_change = listChange.split(",");
         let namesoflists = localStorage.getItem("nameoflists");
@@ -68,4 +95,6 @@ class listManager {
         this.clearDisplay();
         this.loadLists();
     }
+    ;
 }
+;
