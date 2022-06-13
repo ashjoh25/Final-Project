@@ -73,6 +73,13 @@ function dragStart(event) {
 }
 ;
 const boxes = document.querySelectorAll(".list_container");
+const moreboxes = document.querySelectorAll(".masterList");
+moreboxes.forEach(masterList => {
+    masterList.addEventListener("dragenter", dragEnter);
+    masterList.addEventListener("dragover", dragOver);
+    masterList.addEventListener("dragleave", dragLeave);
+    masterList.addEventListener("drop", drop);
+});
 boxes.forEach(list_container => {
     list_container.addEventListener("dragenter", dragEnter);
     list_container.addEventListener("dragover", dragOver);
