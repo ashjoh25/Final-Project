@@ -13,7 +13,7 @@ class listManager {
     };
 
     loadLists () : void {
-        let list_container = document.querySelector(".list_container") as HTMLDivElement
+        let list_container = document.querySelector(".list_container") as HTMLDivElement;
 
         let names_of_lists = localStorage.getItem("nameoflists") as String;
         let array_of_listnames : string[] = names_of_lists.split(",");
@@ -85,6 +85,28 @@ class listManager {
                 };
             };
         };
+    };
+
+    addNewlist (newListname : string) : void {
+        let list_container = document.querySelector(".list_container") as HTMLDivElement;
+        
+        let new_list_name : string = newListname;
+
+        let names_of_lists = localStorage.getItem("nameoflists") as String;
+        let names : string[] = names_of_lists.split(",");
+
+        let list_ele = document.createElement("div");
+        list_ele.setAttribute("class", "slot" + (names.length + 1));
+        list_ele.setAttribute("id", "box" + (names.length + 1));
+        list_container.appendChild(list_ele)
+
+        let list_name_ele = document.createElement("h4");
+        list_name_ele.textContent = new_list_name;
+        list_ele.appendChild(list_name_ele);
+
+        names.push(new_list_name);
+        localStorage.removeItem("nameoflists");
+        localStorage.setItem("nameoflists", names.join(","));
     };
 
     changeListName (listChange : string) : void {

@@ -1,33 +1,29 @@
 "use strict";
 class listManager {
-    setUsername() {
-        let username = localStorage.getItem("username");
-        let username_ele = document.querySelector(".username");
-        if (username === "Your")
-            username_ele.textContent = username + " Task Manager!";
-        else
-            username_ele.textContent = username + "'s Task Manager!";
-    }
     clearDisplay() {
-        let namesoflists = localStorage.getItem("nameoflists");
-        let names = namesoflists.split(",");
-        for (let i = 1; i <= names.length; i++) {
-            let list_ele = document.querySelector(".slot" + i);
-            list_ele.remove();
+        // accesses all the list names from local storage + converts from its string form --> list (very useful)
+        let names_of_lists = localStorage.getItem("nameoflists");
+        let array_of_listnames = names_of_lists.split(",");
+        // for every existing list, select it from the page by its slot number and remove it 
+        for (let i = 1; i <= array_of_listnames.length; i++) {
+            let list_elm = document.querySelector(".slot" + i);
+            list_elm.remove();
         }
+        ;
     }
+    ;
     loadLists() {
         let list_container = document.querySelector(".list_container");
-        let namesoflists = localStorage.getItem("nameoflists");
-        let names = namesoflists.split(",");
-        for (let i = 1; i <= names.length; i++) {
+        let names_of_lists = localStorage.getItem("nameoflists");
+        let array_of_listnames = names_of_lists.split(",");
+        for (let i = 1; i <= array_of_listnames.length; i++) {
             // Creates a div container which acts as the "list" to be placed in the corresponding slot on the webpage
             let list_ele = document.createElement("div");
             list_ele.setAttribute("class", "slot" + i);
             list_ele.setAttribute("id", "box" + i);
             list_container.appendChild(list_ele);
             // Adds name of list to the corresponding list on the webpage
-            let list_name = names[i - 1];
+            let list_name = array_of_listnames[i - 1];
             let list_name_ele = document.createElement("h4");
             list_name_ele.textContent = list_name;
             list_ele.appendChild(list_name_ele);
@@ -58,8 +54,8 @@ class listManager {
         ;
     }
     loadListsTasks(taskObject) {
-        let namesoflists = localStorage.getItem("nameoflists");
-        let names = namesoflists.split(",");
+        let names_of_lists = localStorage.getItem("nameoflists");
+        let names = names_of_lists.split(",");
         for (let i = 1; i <= names.length; i++) {
             let ListTasks = localStorage.getItem("slot" + i);
             let ChecksofTasks = localStorage.getItem("slot" + i + "Check");
@@ -85,10 +81,27 @@ class listManager {
         ;
     }
     ;
+    addNewlist(newListname) {
+        let list_container = document.querySelector(".list_container");
+        let new_list_name = newListname;
+        let names_of_lists = localStorage.getItem("nameoflists");
+        let names = names_of_lists.split(",");
+        let list_ele = document.createElement("div");
+        list_ele.setAttribute("class", "slot" + (names.length + 1));
+        list_ele.setAttribute("id", "box" + (names.length + 1));
+        list_container.appendChild(list_ele);
+        let list_name_ele = document.createElement("h4");
+        list_name_ele.textContent = new_list_name;
+        list_ele.appendChild(list_name_ele);
+        names.push(new_list_name);
+        localStorage.removeItem("nameoflists");
+        localStorage.setItem("nameoflists", names.join(","));
+    }
+    ;
     changeListName(listChange) {
         let list_change = listChange.split(",");
-        let namesoflists = localStorage.getItem("nameoflists");
-        let names = namesoflists.split(",");
+        let names_of_lists = localStorage.getItem("nameoflists");
+        let names = names_of_lists.split(",");
         names[names.indexOf(list_change[0], 0)] = list_change[1];
         localStorage.removeItem("nameoflists");
         localStorage.setItem("nameoflists", names.join(","));

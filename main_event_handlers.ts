@@ -31,9 +31,9 @@ if (localStorage.getItem("userWithInfo") === "true") {
 // a series of selecting one of the buttons on the page and adding an event listener to listen for user's click
 // methods are called corresponding to the button / the button's purpose
 
-const addTaskbutton = document.querySelector("#addTask") as HTMLButtonElement;
+const add_task_button = document.querySelector("#addTask") as HTMLButtonElement;
 
-addTaskbutton.addEventListener("click", () => {
+add_task_button.addEventListener("click", () => {
     let user_task_input = document.querySelector(".taskInput") as HTMLInputElement;
     if (! user_task_input.value) { // checking if user did not type anything
         return;
@@ -44,16 +44,28 @@ addTaskbutton.addEventListener("click", () => {
     };
 });
 
-const clearTasksbutton = document.querySelector("#clearAll") as HTMLButtonElement;
+const add_list_button = document.querySelector("#addList") as HTMLButtonElement;
 
-clearTasksbutton.addEventListener("click", () => {
+add_list_button.addEventListener("click", () => {
+    let user_list_input = document.querySelector(".listInput") as HTMLInputElement;
+    if (! user_list_input.value) {
+        return;
+    } else {
+        listObject.addNewlist(user_list_input.value);
+        taskObject.updateLocal();
+    };
+});
+
+const clear_tasks_button = document.querySelector("#clearAll") as HTMLButtonElement;
+
+clear_tasks_button.addEventListener("click", () => {
     taskObject.clearAllStorage();
     taskObject.clearDisplay();
 });
 
-const changeListNamebutton = document.querySelector("#changeListName") as HTMLButtonElement;
+const change_listname_button = document.querySelector("#changeListName") as HTMLButtonElement;
 
-changeListNamebutton.addEventListener("click", () => {
+change_listname_button.addEventListener("click", () => {
     let listNameInput = document.querySelector(".listNameInput") as HTMLInputElement;
     if (! listNameInput.value) { // checking if user did not type anything
         return;
@@ -63,16 +75,13 @@ changeListNamebutton.addEventListener("click", () => {
     };
 });
 
-// const deleteButton = document.querySelector("#delete") as HTMLButtonElement;
-
-// document.addEventListener("keydown", (event : KeyboardEvent) => {
-//     if (event.repeat)
-//         return;
-    
-//     if (event.key === "Backspace") {
-//         taskObject.removeTask(event.target as HTMLElement);
-//     }
-// });
+document.querySelectorAll<HTMLElement>(".taskLabel").forEach(function(task_elm) {
+    task_elm.addEventListener("click", (event : MouseEvent) => {
+        if (event.shiftKey === true) {
+            taskObject.removeTask(event.target as HTMLElement);
+        };
+    });
+});
 
 document.addEventListener("dragstart", dragStart); 
  
@@ -112,7 +121,7 @@ function drop(event : DragEvent) {
     taskObject.updateLocal();
 };
 
-// "autosave" --> every 2000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
+// "autosave" --> every 1000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 setInterval(function() {
     taskObject.updateLocal();
-}, 2000);
+}, 1000);
