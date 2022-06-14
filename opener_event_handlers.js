@@ -2,7 +2,7 @@
 // event handlers for the opening page that the user sees first 
 // selecting the buttons from the page
 const submit_button = document.querySelector(".submitInfo");
-const start_button = document.querySelector(".infoExist");
+const login_button = document.querySelector(".infoExist");
 // adding event listeners to each button to listen for when user clicks on them
 submit_button.addEventListener("click", () => {
     // clearing local storage --> submit button means new user / no info stored / starting fresh
@@ -26,7 +26,7 @@ submit_button.addEventListener("click", () => {
     // take user to the next main page with the task manager 
     location.href = "main.html";
 });
-start_button.addEventListener("click", () => {
+login_button.addEventListener("click", () => {
     // user has stored info --> need to load data (regarding tasks) from local storage
     localStorage.setItem("userWithInfo", "true");
     location.href = "main.html";

@@ -81,7 +81,16 @@ document.querySelectorAll<HTMLElement>(".taskLabel").forEach(function(task_elm) 
     });
 });
 
-//beginning of dragging code
+document.querySelectorAll<HTMLElement>(".slot").forEach(function(list_elm) {
+    list_elm.addEventListener("click", (event : MouseEvent) => {
+        if (event.shiftKey === true) {
+            listObject.removeList(event.target as HTMLElement);
+            taskObject.updateLocal();
+        };
+    });
+});
+
+// beginning of dragging code
 let dragged : EventTarget | null = null;
 document.addEventListener("dragstart", dragStart); 
  
@@ -127,7 +136,7 @@ function drop(event : DragEvent) {
     event.target!.appendChild(dragged);
     taskObject.updateLocal();
 };
-//end of dragging code
+// end of dragging code
 
 // "autosave" --> every 500 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 setInterval(function() {

@@ -111,7 +111,7 @@ class listManager {
 
     changeListName (listChange : string) : void {
         let list_change : string[] = listChange.split(",");
-        let names_of_lists = localStorage.getItem("nameoflists") as String;
+        let names_of_lists = localStorage.getItem("nameoflists") as string;
         let names : string[] = names_of_lists.split(",");
 
         names[names.indexOf(list_change[0], 0)] = list_change[1];
@@ -120,5 +120,23 @@ class listManager {
 
         this.clearDisplay();
         this.loadLists();
+    };
+
+    removeList(list_ele : HTMLElement) {
+        let list_ele_contents = list_ele.childNodes;
+        let list_name = (list_ele_contents[0]).textContent as string;
+
+        let names_of_lists = localStorage.getItem("nameoflists") as string;
+        let names : string[] = names_of_lists.split(",");
+        names.splice((names.indexOf(list_name)));
+        
+        localStorage.removeItem("nameoflists");
+        localStorage.setItem("nameoflists", names.join(","));
+
+        let list_ele_slot = list_ele.getAttribute("id") as string;
+        localStorage.removeItem(list_ele_slot);
+        localStorage.removeItem(list_ele_slot + "Check");
+
+        list_ele.remove();
     };
 };

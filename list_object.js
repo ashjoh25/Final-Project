@@ -109,5 +109,19 @@ class listManager {
         this.loadLists();
     }
     ;
+    removeList(list_ele) {
+        let list_ele_contents = list_ele.childNodes;
+        let list_name = (list_ele_contents[0]).textContent;
+        let names_of_lists = localStorage.getItem("nameoflists");
+        let names = names_of_lists.split(",");
+        names.splice((names.indexOf(list_name)));
+        localStorage.removeItem("nameoflists");
+        localStorage.setItem("nameoflists", names.join(","));
+        let list_ele_slot = list_ele.getAttribute("id");
+        localStorage.removeItem(list_ele_slot);
+        localStorage.removeItem(list_ele_slot + "Check");
+        list_ele.remove();
+    }
+    ;
 }
 ;

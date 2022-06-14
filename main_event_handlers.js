@@ -77,7 +77,16 @@ document.querySelectorAll(".taskLabel").forEach(function (task_elm) {
         ;
     });
 });
-//beginning of dragging code
+document.querySelectorAll(".slot").forEach(function (list_elm) {
+    list_elm.addEventListener("click", (event) => {
+        if (event.shiftKey === true) {
+            listObject.removeList(event.target);
+            taskObject.updateLocal();
+        }
+        ;
+    });
+});
+// beginning of dragging code
 let dragged = null;
 document.addEventListener("dragstart", dragStart);
 function dragStart(event) {
@@ -119,8 +128,8 @@ function drop(event) {
     taskObject.updateLocal();
 }
 ;
-//end of dragging code
-// "autosave" --> every 1000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
+// end of dragging code
+// "autosave" --> every 500 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 setInterval(function () {
     taskObject.updateLocal();
-}, 1000);
+}, 500);

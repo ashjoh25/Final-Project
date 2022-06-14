@@ -55,7 +55,7 @@ h4 {
 .list_container {
     Display: grid;
     grid-template-columns: repeat(3, 585px);
-    grid-template-rows: minmax(380px, auto);
+    grid-template-rows: minmax(315px, auto);
     gap: auto;
 }
 
