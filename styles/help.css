@@ -12,3 +12,28 @@ h2 {
     padding: 5px;
     letter-spacing: 1px;
 }
+
+h3 {
+    font-size: 27px;
+    font-style: italic;
+    padding: 5px;
+    letter-spacing: 1px;
+}
+
+h4 {
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+hr {
+    padding: 15px;
+}
+
+img {
+    display: block;
+    width: 35%;
+    height: auto;
+    border: 2px;
+    margin: 0 auto;
+    padding: 50px;
+}

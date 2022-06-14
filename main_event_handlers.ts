@@ -40,6 +40,7 @@ add_task_button.addEventListener("click", () => {
         taskObject.addtoList(user_task_input.value, master_default);
         taskObject.updateLocal();
     };
+    user_task_input.value = "";
 });
 
 const add_list_button = document.querySelector("#addList") as HTMLButtonElement;
@@ -52,6 +53,7 @@ add_list_button.addEventListener("click", () => {
         listObject.addNewlist(user_list_input.value);
         taskObject.updateLocal();
     };
+    user_list_input.value = "";
 });
 
 const clear_tasks_button = document.querySelector("#clearAll") as HTMLButtonElement;
@@ -64,16 +66,23 @@ clear_tasks_button.addEventListener("click", () => {
 const change_listname_button = document.querySelector("#changeListName") as HTMLButtonElement;
 
 change_listname_button.addEventListener("click", () => {
-    let listNameInput = document.querySelector(".listNameInput") as HTMLInputElement;
-    if (! listNameInput.value) { // checking if user did not type anything
+    let list_name_input = document.querySelector(".listNameInput") as HTMLInputElement;
+    if (! list_name_input.value) { // checking if user did not type anything
         return;
     } else {
-        listObject.changeListName(listNameInput.value);
+        listObject.changeListName(list_name_input.value);
         listObject.loadListsTasks(taskObject);
     };
+    list_name_input.value = "";
 });
 
-const help_button = document.querySelector("#Help") as HTMLButtonElement;
+const save_button = document.querySelector("#save") as HTMLButtonElement;
+
+save_button.addEventListener("click", () => {
+    taskObject.updateLocal();
+});
+
+const help_button = document.querySelector("#help") as HTMLButtonElement;
 
 help_button.addEventListener("click", () => {
     location.href = "help.html";
@@ -95,6 +104,14 @@ document.querySelectorAll<HTMLElement>(".slot").forEach(function(list_elm) {
             listObject.clearDisplay();
             listObject.loadLists();
             listObject.loadListsTasks(taskObject);
+        };
+    });
+});
+
+document.querySelectorAll<HTMLElement>("h4").forEach(function(elm) {
+    elm.addEventListener("click", (event : MouseEvent) => {
+        if (event.shiftKey === true) {
+            return;
         };
     });
 });

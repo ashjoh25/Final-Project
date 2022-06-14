@@ -21,7 +21,7 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 200px;
+  padding: 75px;
 }
 
 .username {
@@ -58,6 +58,8 @@ h4 {
     grid-template-columns: repeat(3, 585px);
     grid-template-rows: minmax(315px, auto);
     gap: auto;
+    padding-top: 35px;
+    padding-bottom: 35px;
 }
 
 .taskLabel {
@@ -137,10 +139,10 @@ button {
   color: #fff;
   cursor: pointer;
   font-family: "Open Sans";
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 1400;
-  height: 5%;
-  line-height: 5%;
+  height: 3%;
+  line-height: 3%;
   margin: 35px;
   overflow: visible;
   padding: 20px;
