@@ -126,12 +126,20 @@ class listManager {
         let list_ele_contents = list_ele.childNodes;
         let list_name = (list_ele_contents[0]).textContent as string;
 
+        let new_names_of_lists : string[] = []
         let names_of_lists = localStorage.getItem("nameoflists") as string;
         let names : string[] = names_of_lists.split(",");
-        names.splice((names.indexOf(list_name)));
-        
+
+        for (let i = 0; i < names.length; i++) {
+            if (names[i] === list_name) {
+                continue;
+            } else {
+                new_names_of_lists.push(names[i]);
+            };
+        };
+
         localStorage.removeItem("nameoflists");
-        localStorage.setItem("nameoflists", names.join(","));
+        localStorage.setItem("nameoflists", new_names_of_lists.join(","));
 
         let list_ele_slot = list_ele.getAttribute("id") as string;
         localStorage.removeItem(list_ele_slot);

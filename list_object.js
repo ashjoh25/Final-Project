@@ -112,11 +112,21 @@ class listManager {
     removeList(list_ele) {
         let list_ele_contents = list_ele.childNodes;
         let list_name = (list_ele_contents[0]).textContent;
+        let new_names_of_lists = [];
         let names_of_lists = localStorage.getItem("nameoflists");
         let names = names_of_lists.split(",");
-        names.splice((names.indexOf(list_name)));
+        for (let i = 0; i < names.length; i++) {
+            if (names[i] === list_name) {
+                continue;
+            }
+            else {
+                new_names_of_lists.push(names[i]);
+            }
+            ;
+        }
+        ;
         localStorage.removeItem("nameoflists");
-        localStorage.setItem("nameoflists", names.join(","));
+        localStorage.setItem("nameoflists", new_names_of_lists.join(","));
         let list_ele_slot = list_ele.getAttribute("id");
         localStorage.removeItem(list_ele_slot);
         localStorage.removeItem(list_ele_slot + "Check");

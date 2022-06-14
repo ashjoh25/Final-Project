@@ -86,6 +86,9 @@ document.querySelectorAll<HTMLElement>(".slot").forEach(function(list_elm) {
         if (event.shiftKey === true) {
             listObject.removeList(event.target as HTMLElement);
             taskObject.updateLocal();
+            listObject.clearDisplay();
+            listObject.loadLists();
+            listObject.loadListsTasks(taskObject);
         };
     });
 });
