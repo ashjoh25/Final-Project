@@ -69,6 +69,10 @@ change_listname_button.addEventListener("click", () => {
     }
     ;
 });
+const help_button = document.querySelector("#Help");
+help_button.addEventListener("click", () => {
+    location.href = "help.html";
+});
 document.querySelectorAll(".taskLabel").forEach(function (task_elm) {
     task_elm.addEventListener("click", (event) => {
         if (event.shiftKey === true) {

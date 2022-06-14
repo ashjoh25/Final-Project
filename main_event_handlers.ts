@@ -73,6 +73,12 @@ change_listname_button.addEventListener("click", () => {
     };
 });
 
+const help_button = document.querySelector("#Help") as HTMLButtonElement;
+
+help_button.addEventListener("click", () => {
+    location.href = "help.html";
+});
+
 document.querySelectorAll<HTMLElement>(".taskLabel").forEach(function(task_elm) {
     task_elm.addEventListener("click", (event : MouseEvent) => {
         if (event.shiftKey === true) {

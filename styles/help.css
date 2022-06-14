@@ -1,0 +1,14 @@
+h1 {
+    font-size: 40px;
+    font-weight: 5000;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    letter-spacing: 3px;
+}
+
+h2 {
+    font-size: 27px;
+    text-align: center;
+    padding: 5px;
+    letter-spacing: 1px;
+}
