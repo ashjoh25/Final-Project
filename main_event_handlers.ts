@@ -11,8 +11,6 @@ function setUsername() : void {
     };
 };
 
-
-
 // create a new task object and list object that contain the necessary methods
 const taskObject : taskManager = new taskManager();
 const listObject : listManager = new listManager();
@@ -131,7 +129,7 @@ function drop(event : DragEvent) {
 };
 //end of dragging code
 
-// "autosave" --> every 1000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
+// "autosave" --> every 500 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 setInterval(function() {
     taskObject.updateLocal();
-}, 1000);
+}, 500);

@@ -2,7 +2,7 @@
 
 // selecting the buttons from the page
 const submit_button = document.querySelector(".submitInfo") as HTMLButtonElement;
-const start_button = document.querySelector(".infoExist") as HTMLButtonElement;
+const login_button = document.querySelector(".infoExist") as HTMLButtonElement;
 
 // adding event listeners to each button to listen for when user clicks on them
 submit_button.addEventListener("click", () => {
@@ -31,7 +31,7 @@ submit_button.addEventListener("click", () => {
     location.href = "main.html";
 });
 
-start_button.addEventListener("click", () => {
+login_button.addEventListener("click", () => {
     // user has stored info --> need to load data (regarding tasks) from local storage
     localStorage.setItem("userWithInfo", "true");
     location.href = "main.html";

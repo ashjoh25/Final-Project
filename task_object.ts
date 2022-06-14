@@ -55,7 +55,7 @@ class taskManager {
         let names : string[] = namesoflists.split(",");
 
         for (let i = 1; i <= names.length; i++) {
-            let list = document.querySelector(".slot" + i) as HTMLDivElement;
+            let list = document.querySelector("#slot" + i) as HTMLDivElement;
             let slotStorage : string = "";
             let slotCheck : string = "";
 

@@ -73,19 +73,10 @@ document.querySelectorAll(".taskLabel").forEach(function (task_elm) {
     task_elm.addEventListener("click", (event) => {
         if (event.shiftKey === true) {
             taskObject.removeTask(event.target);
-        };
+        }
         ;
     });
 });
-
-// const deleteButton = document.querySelector("#delete") as HTMLButtonElement;
-// document.addEventListener("keydown", (event : KeyboardEvent) => {
-//     if (event.repeat)
-//         return;
-//     if (event.key === "Backspace") {
-//         taskObject.removeTask(event.target as HTMLElement);
-//     }
-// });
 //beginning of dragging code
 let dragged = null;
 document.addEventListener("dragstart", dragStart);
@@ -93,7 +84,6 @@ function dragStart(event) {
     dragged = event.target;
 }
 ;
-const list_container = document.querySelector(".list_container");
 const boxes = document.querySelectorAll(".list_container");
 const moreboxes = document.querySelectorAll(".masterList");
 moreboxes.forEach(masterList => {
@@ -129,8 +119,8 @@ function drop(event) {
     taskObject.updateLocal();
 }
 ;
-// "autosave" --> every 1000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 //end of dragging code
+// "autosave" --> every 1000 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 setInterval(function () {
     taskObject.updateLocal();
 }, 1000);

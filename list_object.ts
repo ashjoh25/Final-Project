@@ -7,7 +7,7 @@ class listManager {
 
         // for every existing list, select it from the page by its slot number and remove it 
         for (let i = 1; i <= array_of_listnames.length; i++) {
-            let list_elm = document.querySelector(".slot" + i) as HTMLDivElement;
+            let list_elm = document.querySelector("#slot" + i) as HTMLDivElement;
             list_elm.remove();
         };
     };
@@ -21,8 +21,8 @@ class listManager {
         for (let i = 1; i <= array_of_listnames.length; i++) {
             // Creates a div container which acts as the "list" to be placed in the corresponding slot on the webpage
             let list_ele = document.createElement("div");
-            list_ele.setAttribute("class", "slot" + i);
-            list_ele.setAttribute("id", "box" + i);
+            list_ele.setAttribute("class", "slot");
+            list_ele.setAttribute("id", "slot" + i);
             list_container.appendChild(list_ele);
 
             // Adds name of list to the corresponding list on the webpage
@@ -67,7 +67,7 @@ class listManager {
             let ListTasks = localStorage.getItem("slot" + i) as string;
             let ChecksofTasks = localStorage.getItem("slot" + i + "Check") as string;
 
-            let list_ele = document.querySelector(".slot" + i) as HTMLDivElement;
+            let list_ele = document.querySelector("#slot" + i) as HTMLDivElement;
             let listTasks : string[] = [];
             let checksofTasks : string[] = [];
             
@@ -96,8 +96,8 @@ class listManager {
         let names : string[] = names_of_lists.split(",");
 
         let list_ele = document.createElement("div");
-        list_ele.setAttribute("class", "slot" + (names.length + 1));
-        list_ele.setAttribute("id", "box" + (names.length + 1));
+        list_ele.setAttribute("class", "slot");
+        list_ele.setAttribute("id", "slot" + (names.length + 1));
         list_container.appendChild(list_ele)
 
         let list_name_ele = document.createElement("h4");

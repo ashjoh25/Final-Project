@@ -6,7 +6,7 @@ class listManager {
         let array_of_listnames = names_of_lists.split(",");
         // for every existing list, select it from the page by its slot number and remove it 
         for (let i = 1; i <= array_of_listnames.length; i++) {
-            let list_elm = document.querySelector(".slot" + i);
+            let list_elm = document.querySelector("#slot" + i);
             list_elm.remove();
         }
         ;
@@ -19,8 +19,8 @@ class listManager {
         for (let i = 1; i <= array_of_listnames.length; i++) {
             // Creates a div container which acts as the "list" to be placed in the corresponding slot on the webpage
             let list_ele = document.createElement("div");
-            list_ele.setAttribute("class", "slot" + i);
-            list_ele.setAttribute("id", "box" + i);
+            list_ele.setAttribute("class", "slot");
+            list_ele.setAttribute("id", "slot" + i);
             list_container.appendChild(list_ele);
             // Adds name of list to the corresponding list on the webpage
             let list_name = array_of_listnames[i - 1];
@@ -59,7 +59,7 @@ class listManager {
         for (let i = 1; i <= names.length; i++) {
             let ListTasks = localStorage.getItem("slot" + i);
             let ChecksofTasks = localStorage.getItem("slot" + i + "Check");
-            let list_ele = document.querySelector(".slot" + i);
+            let list_ele = document.querySelector("#slot" + i);
             let listTasks = [];
             let checksofTasks = [];
             if (ListTasks) {
@@ -87,8 +87,8 @@ class listManager {
         let names_of_lists = localStorage.getItem("nameoflists");
         let names = names_of_lists.split(",");
         let list_ele = document.createElement("div");
-        list_ele.setAttribute("class", "slot" + (names.length + 1));
-        list_ele.setAttribute("id", "box" + (names.length + 1));
+        list_ele.setAttribute("class", "slot");
+        list_ele.setAttribute("id", "slot" + (names.length + 1));
         list_container.appendChild(list_ele);
         let list_name_ele = document.createElement("h4");
         list_name_ele.textContent = new_list_name;

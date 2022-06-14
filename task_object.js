@@ -46,7 +46,7 @@ class taskManager {
         let namesoflists = localStorage.getItem("nameoflists");
         let names = namesoflists.split(",");
         for (let i = 1; i <= names.length; i++) {
-            let list = document.querySelector(".slot" + i);
+            let list = document.querySelector("#slot" + i);
             let slotStorage = "";
             let slotCheck = "";
             if (list.hasChildNodes()) {
