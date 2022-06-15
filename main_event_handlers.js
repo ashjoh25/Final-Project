@@ -154,4 +154,4 @@ function drop(event) {
 // "autosave" --> every 500 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
 setInterval(function () {
     taskObject.updateLocal();
-}, 500);
+}, 150);
