@@ -54,13 +54,16 @@ h4 {
 }
 
 .list_container {
-    Display: grid;
-    grid-template-columns: repeat(3, 585px);
-    grid-template-rows: minmax(315px, auto);
-    gap: auto;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    background-color: #e6e6ff;
+  display: grid;
+  grid-template-columns: repeat(3, 585px);
+  grid-template-rows: minmax(315px, auto);
+  gap: auto;
+  padding-bottom: 35px;
+  background-color: #e6e6ff;
+}
+
+.slot {
+  padding-left: 15px;
 }
 
 .taskLabel {
