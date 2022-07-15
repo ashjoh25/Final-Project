@@ -36,7 +36,6 @@ add_task_button.addEventListener("click", () => {
     else {
         let master_default = document.querySelector(".master1");
         taskObject.addtoList(user_task_input.value, master_default);
-        taskObject.updateLocal();
     }
     ;
     user_task_input.value = "";
@@ -49,10 +48,9 @@ add_list_button.addEventListener("click", () => {
     }
     else {
         listObject.addNewlist(user_list_input.value);
-        taskObject.updateLocal();
+        user_list_input.value = "";
     }
     ;
-    user_list_input.value = "";
 });
 const clear_tasks_button = document.querySelector("#clearAll");
 clear_tasks_button.addEventListener("click", () => {
@@ -92,7 +90,6 @@ document.querySelectorAll(".slot").forEach(function (list_elm) {
     list_elm.addEventListener("click", (event) => {
         if (event.shiftKey === true) {
             listObject.removeList(event.target);
-            taskObject.updateLocal();
             listObject.clearDisplay();
             listObject.loadLists();
             listObject.loadListsTasks(taskObject);
@@ -147,11 +144,6 @@ function drop(event) {
     event.target.classList.remove("drag-over");
     //add it to drop target
     event.target.appendChild(dragged);
-    taskObject.updateLocal();
 }
 ;
 // end of dragging code
-// "autosave" --> every 500 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
-setInterval(function () {
-    taskObject.updateLocal();
-}, 150);
