@@ -50,8 +50,8 @@ add_list_button.addEventListener("click", () => {
         return;
     } else {
         listObject.addNewlist(user_list_input.value);
+        user_list_input.value = "";
     };
-    user_list_input.value = "";
 });
 
 const clear_tasks_button = document.querySelector("#clearAll") as HTMLButtonElement;
