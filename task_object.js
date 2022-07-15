@@ -23,7 +23,7 @@ class taskManager {
                     let task_text = task.textContent;
                     master_storage += task_text + ",";
                     let default_checkbox = document.querySelector("#" + task_text);
-                    if (default_checkbox.checked) {
+                    if (default_checkbox.checked === true) {
                         master_check_storage += "true" + ",";
                     }
                     else {
@@ -55,7 +55,7 @@ class taskManager {
                     let listTask_text = listTasks[j].textContent;
                     slotStorage += listTask_text + ",";
                     let defaultCheckbox = document.querySelector("#" + listTask_text);
-                    if (defaultCheckbox.checked === true) {
+                    if (defaultCheckbox.checked) {
                         slotCheck += "true" + ",";
                     }
                     else {
