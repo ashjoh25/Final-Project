@@ -55,7 +55,7 @@ class taskManager {
                     let listTask_text = listTasks[j].textContent;
                     slotStorage += listTask_text + ",";
                     let defaultCheckbox = document.querySelector("#" + listTask_text);
-                    if (defaultCheckbox.checked) {
+                    if (defaultCheckbox.checked === true) {
                         slotCheck += "true" + ",";
                     }
                     else {
