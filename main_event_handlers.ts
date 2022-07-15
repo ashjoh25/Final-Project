@@ -38,7 +38,6 @@ add_task_button.addEventListener("click", () => {
     } else {
         let master_default = document.querySelector(".master1") as HTMLDivElement;
         taskObject.addtoList(user_task_input.value, master_default);
-        taskObject.updateLocal();
     };
     user_task_input.value = "";
 });
@@ -51,7 +50,6 @@ add_list_button.addEventListener("click", () => {
         return;
     } else {
         listObject.addNewlist(user_list_input.value);
-        taskObject.updateLocal();
     };
     user_list_input.value = "";
 });
@@ -100,7 +98,6 @@ document.querySelectorAll<HTMLElement>(".slot").forEach(function(list_elm) {
     list_elm.addEventListener("click", (event : MouseEvent) => {
         if (event.shiftKey === true) {
             listObject.removeList(event.target as HTMLElement);
-            taskObject.updateLocal();
             listObject.clearDisplay();
             listObject.loadLists();
             listObject.loadListsTasks(taskObject);
@@ -160,6 +157,5 @@ function drop(event : DragEvent) {
     
     //add it to drop target
     event.target!.appendChild(dragged);
-    taskObject.updateLocal();
 };
 // end of dragging code
