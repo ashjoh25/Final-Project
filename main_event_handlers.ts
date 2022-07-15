@@ -163,8 +163,3 @@ function drop(event : DragEvent) {
     taskObject.updateLocal();
 };
 // end of dragging code
-
-// "autosave" --> every 500 millseconds, updateLocal() is called to save in local storage the current version of the page + its data
-setInterval(function() {
-    taskObject.updateLocal();
-}, 150);
